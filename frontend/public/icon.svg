@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f3460;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#533483;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9E00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  
+  <!-- Radar circle waves -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#4CC9F0" stroke-width="3" opacity="0.3"/>
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#9D4EDD" stroke-width="3" opacity="0.4"/>
+  <circle cx="256" cy="256" r="100" fill="none" stroke="#FF006E" stroke-width="3" opacity="0.5"/>
+  
+  <!-- Center radar sweep line -->
+  <line x1="256" y1="256" x2="356" y2="156" stroke="url(#tan)" stroke-width="4" opacity="0.8"/>
+  
+  <!-- Whale icon (simplified) -->
+  <path d="M 180 220 Q 140 220 120 240 Q 110 260 130 270 L 150 260 Q 160 250 170 250 L 200 250 Q 210 240 210 230 Z" fill="#06FFA5" opacity="0.9"/>
+  
+  <!-- Token symbols as dots -->
+  <circle cx="300" cy="200" r="12" fill="#FFD700"/>
+  <circle cx="340" cy="240" r="10" fill="#FFD700"/>
+  <circle cx="320" cy="280" r="8" fill="#FFD700"/>
+  <circle cx="270" cy="310" r="10" fill="#FFD700"/>
+  <circle cx="220" cy="290" r="9" fill="#FFD700"/>
+  
+  <!-- Title text -->
+  <text x="256" y="420" font-family="Arial, sans-serif" font-weight="900" font-size="48" fill="url(#tan)" text-anchor="middle">RADAR</text>
+  <text x="256" y="460" font-family="Arial, sans-serif" font-weight="600" font-size="24" fill="#E8D4B0" text-anchor="middle">MEME TRACKER</text>
+</svg>

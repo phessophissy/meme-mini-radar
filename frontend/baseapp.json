@@ -1,16 +1,41 @@
 ﻿{
   "name": "Meme Mini-Radar",
-  "description": "Track top 15 Base meme tokens with whale & smart money activity in real-time",
-  "version": "1.0.0",
-  "icon": "/icon.png",
+  "short_description": "Base Meme Token Whale Tracker",
+  "description": "Real-time radar tracking the top 15 meme tokens smart money and whales are accumulating on Base. Dynamic data updates every 5 minutes showing whale activity, smart money flow, and market metrics with an interactive compact UI.",
   "url": "https://meme-mini-radar.vercel.app",
+  "icon": "https://meme-mini-radar.vercel.app/icon.png",
+  "cover_image": "https://meme-mini-radar.vercel.app/cover.png",
   "chain": "base",
-  "contract_addresses": {
-    "base": []
-  },
   "categories": ["DeFi", "Analytics", "Trading"],
-  "tags": ["meme", "tokens", "whales", "smart-money", "base"],
-  "author": "phessophissy",
-  "homepage_url": "https://meme-mini-radar.vercel.app",
-  "support_url": "https://github.com/phessophissy/meme-mini-radar"
+  "tags": ["meme", "tokens", "whales", "smart-money", "base", "trading", "analytics", "real-time"],
+  "version": "1.0.0",
+  "author": {
+    "name": "Meme Mini-Radar Team",
+    "url": "https://github.com/phessophissy/meme-mini-radar"
+  },
+  "social": {
+    "github": "https://github.com/phessophissy/meme-mini-radar",
+    "twitter": ""
+  },
+  "screenshots": [
+    "https://meme-mini-radar.vercel.app/screenshot-1.png",
+    "https://meme-mini-radar.vercel.app/screenshot-2.png"
+  ],
+  "contract_address": "",
+  "features": [
+    "Real-time whale activity tracking",
+    "Smart money flow indicators",
+    "Top 15 meme tokens on Base",
+    "5-minute auto-refresh",
+    "Click-to-expand token details",
+    "Mobile-optimized interface",
+    "Nansen API integration"
+  ],
+  "permissions": [],
+  "supported_wallets": ["coinbase", "metamask", "walletconnect"],
+  "network": {
+    "chainId": 8453,
+    "name": "Base",
+    "rpc": "https://mainnet.base.org"
+  }
 }
