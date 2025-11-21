@@ -44,7 +44,7 @@ export default function Header({ tokenCount }: HeaderProps) {
           <span> Smart Money</span>
         </div>
         <div className="info-chip">
-          <span>{tokenCount}/15 Tokens</span>
+          <span>{tokenCount}/30 Tokens</span>
         </div>
       </div>
     </div>

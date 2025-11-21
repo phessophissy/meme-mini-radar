@@ -7,6 +7,7 @@ import { sdk } from '@farcaster/miniapp-sdk';
 
 interface MemeToken {
   symbol: string;
+  name?: string;
   address: string;
   score: number;
   whaleActivity?: number;
@@ -18,29 +19,37 @@ export default function Home() {
   const [tokens, setTokens] = useState<MemeToken[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const load = async () => {
+    try {
+      setRefreshing(true);
+      setLoading(true);
+      const res = await fetch("/api/nansen");
+      const data = await res.json();
+
+      if (data.success && data.top15) {
+        setTokens(data.top15);
+      } else {
+        setError("Failed to load tokens");
+      }
+    } catch (err) {
+      console.error("Error loading tokens:", err);
+      setError("Error connecting to API");
+    } finally {
+      setLoading(false);
+      setRefreshing(false);
+    }
+  };
+
+  const handleManualRefresh = () => {
+    if (!refreshing) {
+      load();
+    }
+  };
 
   useEffect(() => {
-    async function load() {
-      try {
-        setLoading(true);
-        const res = await fetch("/api/nansen");
-        const data = await res.json();
-
-        if (data.success && data.top15) {
-          setTokens(data.top15);
-        } else {
-          setError("Failed to load tokens");
-        }
-      } catch (err) {
-        console.error("Error loading tokens:", err);
-        setError("Error connecting to API");
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
-
-    // Auto-refresh every 5 minutes
+    load();    // Auto-refresh every 5 minutes
     const interval = setInterval(load, 300000);
     return () => clearInterval(interval);
   }, []);
@@ -55,6 +64,18 @@ export default function Home() {
   return (
     <div className="min-h-screen animated-gradient p-3 md:p-5">
       <Header tokenCount={tokens.length} />
+      
+      {/* Refresh Button */}
+      <div className="flex justify-center mb-4">
+        <button
+          onClick={handleManualRefresh}
+          disabled={refreshing}
+          className={`refresh-button ${refreshing ? 'refreshing' : ''}`}
+        >
+          <span className="refresh-icon">🔄</span>
+          <span>{refreshing ? 'Refreshing...' : 'Refresh Now'}</span>
+        </button>
+      </div>
 
       {loading && (
         <div className="flex flex-col items-center justify-center py-16">
@@ -72,8 +93,9 @@ export default function Home() {
       )}
 
       {!loading && !error && (
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 2xl:grid-cols-8 gap-2">
+        <div className="max-w-7xl mx-auto relative">
+          <div className="floating-balloons"></div>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 2xl:grid-cols-10 gap-2 relative z-10">
             {tokens.map((token, i) => (
               <TokenCard key={i} token={token} index={i} />
             ))}
@@ -81,8 +103,8 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="mt-12 text-center text-white/80 pb-6">
-        <div className="flex flex-col items-center gap-3">
+      <footer className="mt-8 text-center text-white/80 pb-4">
+        <div className="flex flex-col items-center gap-1.5">
           <div className="flex items-center gap-2">
             <span className="pulse-dot-small"></span>
             <p className="font-bold text-tan-light text-sm">Live Updates Every 5min</p>
