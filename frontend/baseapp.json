@@ -1,18 +1,16 @@
-{
+﻿{
   "name": "Meme Mini-Radar",
-  "description": "A Base-exclusive Meme Token Sentiment Radar powered by Nansen API. Track the top 15 trending meme tokens with real-time sentiment scores.",
+  "description": "Track top 15 Base meme tokens with whale & smart money activity in real-time",
   "version": "1.0.0",
-  "homepage_url": "https://your-domain.xyz",
-  "chains": ["base"],
+  "icon": "/icon.png",
+  "url": "https://meme-mini-radar.vercel.app",
+  "chain": "base",
   "contract_addresses": {
-    "base": ["DEPLOY_CONTRACT_ADDRESS_HERE"]
+    "base": []
   },
-  "features": [
-    "Real-time meme token tracking",
-    "Sentiment score analysis",
-    "On-chain data storage",
-    "Colorful cartoon UI"
-  ],
-  "category": "defi",
-  "tags": ["meme", "tokens", "sentiment", "analytics", "base"]
+  "categories": ["DeFi", "Analytics", "Trading"],
+  "tags": ["meme", "tokens", "whales", "smart-money", "base"],
+  "author": "phessophissy",
+  "homepage_url": "https://meme-mini-radar.vercel.app",
+  "support_url": "https://github.com/phessophissy/meme-mini-radar"
 }

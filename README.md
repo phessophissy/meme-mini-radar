@@ -1,14 +1,52 @@
-#  Meme Mini-Radar
+﻿#  Meme Mini-Radar
 
-A **Base-exclusive Meme Token Sentiment Radar** built as a BaseApp mini-app. Features a colorful cartoon-themed UI with real-time sentiment tracking powered by Nansen API.
+ **Live App:** https://meme-mini-radar.vercel.app
+
+A **Base-exclusive Meme Token Whale & Smart Money Tracker** built as a BaseApp mini-app. Features a colorful cartoon-themed UI with real-time tracking powered by Nansen API.
 
 ##  Features
 
--  **Real-time Meme Token Tracking** - Top 15 trending meme tokens on Base
--  **Cartoon-Themed UI** - Colorful bubble design with italic bold Century Gothic font
+-  **Whale Activity Tracking** - Monitor whale movements on Base meme tokens
+-  **Smart Money Flow** - Track where smart money is flowing
+-  **Cartoon-Themed UI** - Colorful animated gradient design with compact mobile-friendly cards
+-  **Auto-Refresh** - Updates every 5 minutes
+-  **Mobile Optimized** - Fully responsive design
 -  **On-Chain Storage** - Smart contract stores daily top tokens
--  **BaseApp Integration** - Deployable as a Base mini-app
--  **Sentiment Scores** - 0-100 scoring system for each token
+-  **BaseApp Ready** - Deployable as a Base mini-app
+
+##  Quick Start
+
+### Prerequisites
+
+- Node.js 18+ and npm
+- MetaMask or another Web3 wallet (optional)
+
+### Installation
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/phessophissy/meme-mini-radar.git
+cd meme-mini-radar
+```
+
+2. **Install Dependencies**
+```bash
+cd frontend
+npm install
+```
+
+3. **Configure Environment**
+Create `frontend/.env.local`:
+```
+NANSEN_API_KEY=your_nansen_api_key_here
+```
+
+4. **Run Development Server**
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the app!
 
 ##  Project Structure
 
@@ -16,208 +54,115 @@ A **Base-exclusive Meme Token Sentiment Radar** built as a BaseApp mini-app. Fea
 meme-mini-radar/
  contracts/
     MemeMiniRadar.sol          # Smart contract for on-chain storage
- scripts/
-    deploy.js                  # Deployment script (optional)
  frontend/
     app/
        page.tsx               # Main dashboard
-       globals.css            # Cartoon theme styling
+       globals.css            # Animated gradient theme
        api/
            nansen/
                route.ts       # Nansen API integration
     components/
-       TokenCard.tsx          # Token display card
-       Header.tsx             # Page header
+       TokenCard.tsx          # Compact expandable token cards
+       Header.tsx             # Animated header
     lib/
        nansen.ts              # Nansen API logic
     baseapp.json               # BaseApp manifest
-    .env.local                 # Environment variables
- hardhat.config.js              # Hardhat configuration
  README.md
 ```
 
-##  Quick Start
+##  UI Features
 
-### Prerequisites
-
-- Node.js 18+ and npm
-- WSL/Ubuntu (recommended)
-- MetaMask or another Web3 wallet
-
-### Installation
-
-1. **Install Dependencies**
-
-```bash
-# Root project (for Hardhat - optional)
-cd meme-mini-radar
-npm install
-
-# Frontend
-cd frontend
-npm install
-```
-
-2. **Configure Environment**
-
-The Nansen API key is already configured in `frontend/.env.local`:
-```
-NANSEN_API_KEY=faiPiZmitocKPy3n7nxYSGOPTSs7PrC9
-```
-
-3. **Run Development Server**
-
-```bash
-cd frontend
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to see the app!
-
-##  Smart Contract Deployment (Using Remix)
-
-### Deploy with Remix IDE
-
-1. **Open Remix IDE**
-   - Go to [https://remix.ethereum.org](https://remix.ethereum.org)
-
-2. **Create New File**
-   - Create `MemeMiniRadar.sol`
-   - Copy the contract code from `contracts/MemeMiniRadar.sol`
-
-3. **Compile**
-   - Select Solidity compiler version `0.8.20`
-   - Click "Compile MemeMiniRadar.sol"
-
-4. **Deploy to Base**
-   - Switch to "Deploy & Run Transactions" tab
-   - Environment: Select "Injected Provider - MetaMask"
-   - Make sure MetaMask is connected to **Base Mainnet**
-     - Network: Base
-     - Chain ID: 8453
-     - RPC: https://mainnet.base.org
-   - Click "Deploy"
-   - Confirm transaction in MetaMask
-
-5. **Copy Contract Address**
-   - After deployment, copy the contract address
-   - Update `frontend/.env.local`:
-     ```
-     NEXT_PUBLIC_CONTRACT_ADDRESS=0xYourContractAddress
-     ```
-   - Update `frontend/baseapp.json`:
-     ```json
-     "contract_addresses": {
-       "base": ["0xYourContractAddress"]
-     }
-     ```
-
-### Alternative: Deploy with Hardhat (Optional)
-
-```bash
-# Create .env file
-cp .env.example .env
-
-# Add your private key to .env
-# PRIVATE_KEY=your_private_key_here
-
-# Deploy to Base mainnet
-npx hardhat run scripts/deploy.js --network base
-
-# Or deploy to Base Sepolia testnet
-npx hardhat run scripts/deploy.js --network baseSepolia
-```
-
-##  UI Customization
-
-The app uses a colorful cartoon theme with:
-- **Pastel gradient backgrounds** (pink  purple  yellow)
-- **Bubble cards** with shadow effects on hover
-- **Italic bold Century Gothic font**
-- **Dynamic color coding** for different tokens
-
-Customize colors in `frontend/components/TokenCard.tsx`:
-```typescript
-const colors = [
-  "border-pink-400 bg-pink-50",
-  "border-blue-400 bg-blue-50",
-  // Add more color combinations
-];
-```
+- **Animated Gradient Background** - Smooth color transitions
+- **Compact Token Cards** - Click to expand for details
+- **Whale & Smart Money Bars** - Visual progress indicators
+- **Mobile-First Design** - Optimized for all screen sizes
+- **Readable Gold/Wheat Colors** - High contrast text
 
 ##  Nansen API Integration
 
-The app uses Nansen API to fetch trending meme tokens. The API route is configured with:
-- **Endpoint**: `https://api.nansen.ai/external/trending-tokens`
-- **Filter**: Base chain + meme category
+The app uses Nansen's Smart Money Holdings endpoint:
+- **Endpoint**: `https://api.nansen.ai/api/v1/smart-money/holdings`
+- **Filter**: Base chain only
 - **Fallback**: Mock data if API is unavailable
+- **Refresh**: Every 5 minutes
+
+##  Deploy to Vercel
+
+1. **Push to GitHub**
+```bash
+git push origin main
+```
+
+2. **Deploy**
+```bash
+cd frontend
+vercel --prod
+```
+
+3. **Add Environment Variable**
+```bash
+vercel env add NANSEN_API_KEY production
+```
+
+##  Smart Contract Deployment (Using Remix)
+
+1. Open [Remix IDE](https://remix.ethereum.org)
+2. Create `MemeMiniRadar.sol` and copy contract code
+3. Compile with Solidity `0.8.20`
+4. Deploy to Base Mainnet:
+   - Network: Base
+   - Chain ID: 8453
+   - RPC: https://mainnet.base.org
+5. Copy contract address and update `baseapp.json`
 
 ##  BaseApp Deployment
 
 To deploy as a BaseApp mini-app:
 
-1. **Build Frontend**
-```bash
-cd frontend
-npm run build
-```
-
-2. **Update baseapp.json**
-   - Set your `homepage_url`
-   - Add deployed contract address
-
-3. **Upload to BaseApp**
-   - Go to BaseApp dashboard
-   - Upload `baseapp.json` + build output
-   - Follow BaseApp deployment instructions
-
-##  Smart Contract Functions
-
-### Owner Functions (Write)
-- `addMemeToken(day, token, symbol, score)` - Add a token for a specific day
-- `resetDay(day)` - Clear tokens for a specific day
-
-### Public Functions (Read)
-- `getDailyTokens(day)` - Get all tokens for a specific day
-- `countForDay(day)` - Get count of tokens stored for a day
-
-Example usage with ethers.js:
-```javascript
-const day = Math.floor(Date.now() / 86400000); // Current day
-const [tokens, count] = await contract.getDailyTokens(day);
-```
+1. Update `frontend/baseapp.json` with your contract address
+2. Build: `npm run build`
+3. Upload to BaseApp dashboard
+4. Follow BaseApp deployment instructions
 
 ##  Tech Stack
 
-- **Frontend**: Next.js 14, React, TypeScript
-- **Styling**: Tailwind CSS, Custom CSS (Century Gothic)
+- **Frontend**: Next.js 16, React, TypeScript
+- **Styling**: Tailwind CSS + Custom Animations
 - **Smart Contract**: Solidity 0.8.20
 - **Blockchain**: Base L2
 - **API**: Nansen API
-- **Development**: Hardhat, Remix IDE
+- **Deployment**: Vercel
 
-##  Development Notes
+##  Live Demo
 
-- The app works with or without blockchain deployment (uses mock data)
-- Nansen API includes fallback to mock data if requests fail
-- Contract deployment is optional for frontend development
-- Use Base Sepolia testnet for testing before mainnet
+Visit: **https://meme-mini-radar.vercel.app**
 
-##  Important Notes
+Features:
+- Top 15 meme tokens on Base
+- Real-time whale activity tracking
+- Smart money flow indicators
+- Click any token to see detailed metrics
 
-- **Never commit** your private keys or API keys
-- Use `.env.local` for sensitive data (already gitignored)
-- Test on testnet (Base Sepolia) before mainnet deployment
-- The Nansen API key provided is for development - consider getting your own for production
+##  Environment Variables
+
+Required in `.env.local`:
+```
+NANSEN_API_KEY=your_api_key_here
+```
+
+Optional:
+```
+NEXT_PUBLIC_CONTRACT_ADDRESS=0xYourContractAddress
+```
 
 ##  License
 
 MIT License - feel free to use and modify!
 
-##  Contributing
+##  Acknowledgments
 
-Built following the specifications for a Base-exclusive meme token sentiment radar with cartoon UI and Nansen API integration.
+Built for Base  | Powered by Nansen  | Deployed on Vercel 
 
 ---
 
-**Built for Base  | Powered by Nansen  | Designed with **
+**Made with  for the Base ecosystem**
