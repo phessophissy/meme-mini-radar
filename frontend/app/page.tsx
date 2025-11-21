@@ -73,16 +73,38 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="mt-8 text-center text-white/70 text-xs pb-4">
-        <div className="flex items-center justify-center gap-3 flex-wrap">
-          <span className="pulse-dot-small"></span>
-          <p className="font-bold">Live Updates Every 5min</p>
-          <span className="text-tan-light"></span>
-          <p> Whale Tracker</p>
-          <span className="text-tan-light"></span>
-          <p> Smart Money Flow</p>
-          <span className="text-tan-light"></span>
-          <p>Powered by Nansen</p>
+      <footer className="mt-12 text-center text-white/80 pb-6">
+        <div className="flex flex-col items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="pulse-dot-small"></span>
+            <p className="font-bold text-tan-light text-sm">Live Updates Every 5min</p>
+          </div>
+          
+          <div className="flex items-center gap-4 flex-wrap justify-center text-xs text-white/70">
+            <p className="flex items-center gap-1">
+              <span>🐋</span>
+              <span>Whale Tracker</span>
+            </p>
+            <span className="text-tan-light/50">•</span>
+            <p className="flex items-center gap-1">
+              <span>💰</span>
+              <span>Smart Money Flow</span>
+            </p>
+            <span className="text-tan-light/50">•</span>
+            <p className="text-tan-light/90">Powered by Nansen</p>
+          </div>
+          
+          <p className="text-xs text-tan-light/70 mt-1">
+            Created by{" "}
+            <a 
+              href="https://x.com/phessophissy" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-tan font-semibold hover:text-tan-light transition-colors hover:underline"
+            >
+              @Phessophissy
+            </a>
+          </p>
         </div>
       </footer>
     </div>
