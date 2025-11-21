@@ -1,0 +1,33 @@
+﻿{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "baseBuilder": {
+    "ownerAddress": "0x"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Meme Mini-Radar",
+    "homeUrl": "https://meme-mini-radar.vercel.app",
+    "iconUrl": "https://meme-mini-radar.vercel.app/logo.png",
+    "splashImageUrl": "https://meme-mini-radar.vercel.app/logo.png",
+    "splashBackgroundColor": "#1a1a2e",
+    "webhookUrl": "https://meme-mini-radar.vercel.app/api/webhook",
+    "subtitle": "Real-Time Whale & Smart Money Tracker",
+    "description": "Track the top 15 meme tokens smart money and whales are accumulating on Base. Live updates every 5 minutes with whale activity, smart money flow, and market metrics powered by Nansen.",
+    "screenshotUrls": [
+      "https://meme-mini-radar.vercel.app/screenshot-1.png",
+      "https://meme-mini-radar.vercel.app/screenshot-2.png"
+    ],
+    "primaryCategory": "defi",
+    "tags": ["meme", "tokens", "whales", "smart-money", "base", "defi", "analytics", "trading"],
+    "heroImageUrl": "https://meme-mini-radar.vercel.app/logo.png",
+    "tagline": "Track whale movements instantly",
+    "ogTitle": "Meme Mini-Radar - Base Whale Tracker",
+    "ogDescription": "Real-time tracking of top 15 meme tokens smart money and whales are buying on Base",
+    "ogImageUrl": "https://meme-mini-radar.vercel.app/logo.png",
+    "noindex": false
+  }
+}

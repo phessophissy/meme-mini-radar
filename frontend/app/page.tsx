@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import TokenCard from "../components/TokenCard";
 import Header from "../components/Header";
+import { sdk } from '@farcaster/miniapp-sdk';
 
 interface MemeToken {
   symbol: string;
@@ -43,6 +44,13 @@ export default function Home() {
     const interval = setInterval(load, 300000);
     return () => clearInterval(interval);
   }, []);
+
+  // Initialize MiniApp SDK when app is ready
+  useEffect(() => {
+    if (!loading && tokens.length > 0) {
+      sdk.actions.ready().catch(console.error);
+    }
+  }, [loading, tokens]);
 
   return (
     <div className="min-h-screen animated-gradient p-3 md:p-5">

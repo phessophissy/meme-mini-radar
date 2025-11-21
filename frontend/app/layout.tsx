@@ -32,6 +32,20 @@ export const metadata: Metadata = {
     description: "Track whale activity and smart money flow on Base meme tokens",
     images: ["/logo.png"],
   },
+  other: {
+    "fc:miniapp": JSON.stringify({
+      version: "next",
+      imageUrl: "https://meme-mini-radar.vercel.app/logo.png",
+      button: {
+        title: "Track Whales Now",
+        action: {
+          type: "launch_miniapp",
+          name: "Meme Mini-Radar",
+          url: "https://meme-mini-radar.vercel.app"
+        }
+      }
+    })
+  }
 };
 
 export default function RootLayout({
