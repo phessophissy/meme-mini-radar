@@ -1,0 +1,39 @@
+﻿import React from "react";
+
+interface HeaderProps {
+  tokenCount: number;
+}
+
+export default function Header({ tokenCount }: HeaderProps) {
+  return (
+    <div className="text-center mb-8 relative">
+      <div className="inline-block animate-float">
+        <h1 className="main-title">
+          <span className="title-icon"></span>
+          Meme Radar
+          <span className="title-icon"></span>
+        </h1>
+      </div>
+      
+      <p className="subtitle">
+        Real-Time Whale & Smart Money Tracker
+      </p>
+      
+      <div className="flex items-center justify-center gap-4 mt-4 flex-wrap">
+        <div className="info-chip">
+          <span className="pulse-dot-small"></span>
+          <span>Live Data</span>
+        </div>
+        <div className="info-chip">
+          <span> Whale Activity</span>
+        </div>
+        <div className="info-chip">
+          <span> Smart Money</span>
+        </div>
+        <div className="info-chip">
+          <span>{tokenCount}/15 Tokens</span>
+        </div>
+      </div>
+    </div>
+  );
+}
